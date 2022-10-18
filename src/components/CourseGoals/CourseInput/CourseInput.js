@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-
 import Button from '../../UI/Button/Button';
-import './CourseInput.css';
 
-const CourseInput = props => {
-  const [enteredValue, setEnteredValue] = useState('');
-  const [isValid, setIsValid] = useState(true)
-
-  const FormControl = styled.div`
+const FormControl = styled.div`
   margin: 0.5rem 0;
   
   & label {
@@ -40,6 +34,10 @@ const CourseInput = props => {
     color: #72081d;
   }
   `;
+
+const CourseInput = props => {
+  const [enteredValue, setEnteredValue] = useState('');
+  const [isValid, setIsValid] = useState(true)
 
   const goalInputChangeHandler = event => {
     if (event.target.value.trim().length > 0){
