@@ -9,15 +9,20 @@ const FormControl = styled.div`
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
+    padding-left: 5px;
+    color: ${props => props.invalid ? 'red' : 'black'}
   }
   
   & input {
     display: block;
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid ${props => props.invalid ? '#72081d' : '#ccc'};
     font: inherit;
     line-height: 1.5rem;
-    padding: 0 0.25rem;
+    padding: 0.25rem 0.25rem;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: ${props => props.invalid ? '#faab83' : '#ffffff'};
   }
   
   & input:focus {
@@ -25,14 +30,7 @@ const FormControl = styled.div`
     background: #faf9f9;
     border-color: black;
   }
-  
-  &.invalid input{
-    border-color: #72081d;
-    background: azure;
-  }
-  &.invalid label{
-    color: #72081d;
-  }
+
   `;
 
 const CourseInput = props => {
@@ -59,8 +57,8 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl className={!isValid && 'invalid'}>
-        <label>Course Goal</label>
+      <FormControl invalid={!isValid}>
+        <label>New Goal</label>
         <input
             type="text"
             onChange={goalInputChangeHandler}
